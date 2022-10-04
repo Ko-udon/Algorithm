@@ -8,12 +8,13 @@ class Solution {
         for(int i=0;i<N;i++){
             set.add(nums[i]);
         }
-        if(N/2<set.size()){
-            return N/2;
-        }
-        else{
-            return set.size();
-        }
+        return Math.min(nums.length/2,set.size());
+        // if(N/2<set.size()){
+        //     return N/2;
+        // }
+        // else{
+        //     return set.size();
+        // }
         //return answer;
     }
 }
