@@ -1,46 +1,39 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class Solution {
-    public String solution(String X, String Y) {
+public class Solution {
+    static public String solution(String x, String y) {
+        String answer = "";
         StringBuilder sb = new StringBuilder();
-        TreeMap<Character, Integer> mapX = new TreeMap<>(Collections.reverseOrder());
-        TreeMap<Character, Integer> mapY = new TreeMap<>(Collections.reverseOrder());
-         for (char s : X.toCharArray()) {
-            Integer count = mapX.get(s);
-            if (count == null) {
-                mapX.put(s, 1);
-            } else {
-                mapX.put(s, count + 1);
-            }
-
-        }
-        for (char s : Y.toCharArray()) {
-            Integer count = mapY.get(s);
-            if (count == null) {
-                mapY.put(s, 1);
-            } else {
-                mapY.put(s, count + 1);
-            }
+        int[] xCount={0,0,0,0,0,0,0,0,0,0};
+        int[] yCount={0,0,0,0,0,0,0,0,0,0};
+        
+        for(int i=0;i<x.length();i++){
+            xCount[x.charAt(i)-'0']++;    
         }
         
-        for(Map.Entry<Character, Integer> e : mapX.entrySet()) {
-            if (mapY.containsKey(e.getKey())) {
-                while (mapY.get(e.getKey()) > 0 && mapX.get(e.getKey()) > 0) {
-                    sb.append(e.getKey());
-                    mapX.put(e.getKey(), mapX.get(e.getKey()) - 1);
-                    mapY.put(e.getKey(), mapY.get(e.getKey()) - 1);
-                }
+        for(int i=0;i<y.length();i++){
+            yCount[y.charAt(i)-'0']++;    
+        }
+        
+        for(int i=9;i>-1;i--){
+            if(xCount[i]>yCount[i]){
+                sb.append(String.valueOf(i).repeat(yCount[i]));
+            }
+            else if(xCount[i]==yCount[i]){
+                sb.append(String.valueOf(i).repeat(yCount[i]));
+            }
+            else{
+                sb.append(String.valueOf(i).repeat(xCount[i]));
             }
         }
-
-        if (sb.length() == 0) {
+        if(sb.length() == 0){  //같은게 없다면
             return "-1";
-        } else if (sb.charAt(0) == '0') {
+        } 
+        else if (sb.charAt(0) == '0') {  //
             return "0";
         }
-
         return sb.toString();
-    
     }
-    
 }
