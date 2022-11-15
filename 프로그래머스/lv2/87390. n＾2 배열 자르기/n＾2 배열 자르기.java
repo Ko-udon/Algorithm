@@ -5,6 +5,7 @@ class Solution {
         List<Long> list=new ArrayList<>();
         for(long i=left;i<=right;i++){
             list.add(Math.max(i/n,i%n)+1);
+            
         }
         
         
