@@ -1,16 +1,23 @@
 class Solution {
+//    numbers	target	return
+//  [1, 1, 1, 1, 1]	3	5
+//  [4, 1, 2, 1]	4	2
     int answer=0;
     public int solution(int[] numbers, int target) {
         dfs(numbers,0,target,0);
         return answer;
     }
     public void dfs(int[] numbers,int depth,int target, int sum){
-        if(depth==numbers.length) {
-            if(sum==target) answer++;
+        if(depth==numbers.length){
+            if(sum==target){
+                answer++;
+            }
         }else{
             dfs(numbers,depth+1,target,sum+numbers[depth]);
             dfs(numbers,depth+1,target,sum-numbers[depth]);
         }
+       
+        
         
     }
     
