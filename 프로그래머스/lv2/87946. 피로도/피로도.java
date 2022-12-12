@@ -13,6 +13,7 @@ class Solution {
                 visit[i]=true;
                 dfs(depth+1,k-dungeons[i][1],dungeons);
                 visit[i]=false;    
+                
             }
             
         }
