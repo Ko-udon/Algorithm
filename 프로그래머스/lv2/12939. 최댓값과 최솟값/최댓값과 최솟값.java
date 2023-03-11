@@ -17,7 +17,7 @@ class Solution {
             if(max<numInt[i]){
                 max=numInt[i];
             }
-            
+            //
         }
         
         
