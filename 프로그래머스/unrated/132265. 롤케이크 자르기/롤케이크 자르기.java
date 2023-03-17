@@ -5,6 +5,7 @@ class Solution {
     public int solution(int[] topping) {
         int answer = 0;
         int size = topping.length;
+        //
         HashSet<Integer> first = new HashSet<>();
         HashMap<Integer, Integer> second = new HashMap<>();
 
