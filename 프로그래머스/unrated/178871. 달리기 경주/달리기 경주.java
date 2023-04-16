@@ -8,6 +8,7 @@ class Solution {
         for(int i =0; i<players.length; i++){
             map.put(players[i],i);
         }
+        //백준허브 테스트
         
         for(int i =0; i<callings.length; i++){
             int pos = map.get(callings[i]);
