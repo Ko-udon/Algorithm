@@ -6,4 +6,5 @@ def solution(cards1, cards2, goal):
             cards2.pop(0)
         else:
             return "No"
+        
     return "Yes"
