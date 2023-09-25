@@ -165,3 +165,55 @@ def solution(data):
     return [sum(data, []).count('#'), sum(list(filter(lambda x:type(x) == int, sum(data, []))))]
 
 solution(data)
+
+# 6. 샌드위치
+
+# 문제: https://pyalgo.co.kr/?page=6
+#  1, 2, 3, 4, 1
+# [1, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1] -> 2개
+# 1, 2, 3, 4, 1, 2, 3, 4, 1
+
+
+# 스택으로 풀기
+# data = [1, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1]
+data = [1, 2, 3, 4, 1, 2, 3, 4, 1]
+def solution(data):
+    sandwitch = [1, 2, 3, 4, 1]
+    count = 0
+    stack = []
+
+    for i in data:
+        stack.append(i)
+        if len(stack) >= 5 and stack[-5:] == sandwitch: # 뒤에서 5번째 부터 끝까지 값이 샌드위치와 일치하는지 확인
+            stack = stack[0:-5] # 샌드위치 pop()
+            count+=1
+    return count
+
+
+# string으로 풀기
+data = [1, 1, 1, 2, 3, 4, 1, 2, 3, 4, 1]
+data = [1, 2, 3, 4, 1, 2, 3, 4, 1]
+def solution(data):
+    sandwitch = '12341'
+
+    data_str = ''.join(map(str,data)) # 문자열로 바꾸기
+    count = 0
+    while sandwitch in data_str:
+        count+=1
+        data_str = data_str.replace(sandwitch, '', 1) # 샌드위치 패턴 제거, 한번만!
+    return count
+solution(data)
+
+# 7. 두 수의 합 찾기
+# 문제: https://pyalgo.co.kr/?page=7#
+from itertools import combinations
+
+data = [[1, 5, 10, 20, 93], 103]	# 오름차순
+def solution(data):
+    result = list(combinations(data[0], 2))
+    answer_list = list(filter(lambda x : x[0]+x[1] == data[1], result))
+    first = data[0].index(answer_list[0][0])
+    second = data[0].index(answer_list[0][1], first+1)
+    return [first, second]
+
+solution(data)
