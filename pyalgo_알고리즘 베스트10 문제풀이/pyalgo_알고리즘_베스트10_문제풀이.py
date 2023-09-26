@@ -217,3 +217,98 @@ def solution(data):
     return [first, second]
 
 solution(data)
+
+# 8. 무기 생산
+# https://pyalgo.co.kr/?page=8#
+
+def solution(data):
+    if data < 3000:
+        return 0
+
+    amount = data
+
+    sharp_sword = data // 3300
+    amount -= 3300 * sharp_sword
+
+    # 검 10자루당 날이 서지 않은 검 1자루
+    service = sharp_sword // 10
+
+    # 100자루당 날이 선 검 1자루
+    sharp_sword += sharp_sword // 100
+
+
+    # 아직 날이 선 검이 아닌, 일반 검이 남아있으며 예산이 남아있는 경우
+    if service != 0 :
+        while service > 0 and amount >= 300:
+            amount -= 300
+            service -= 1
+            sharp_sword += 1
+
+    return sharp_sword
+
+
+print(solution(100))
+print(solution(36600))
+print(solution(66600))
+
+# 9. 최대 손실액
+# https://pyalgo.co.kr/?page=9#
+
+def solution(data):
+    right = min(data)
+    left = max(data)
+    while True:
+        if data.index(left) > data.index(right):
+            data.remove(left)
+            left = max(data)
+        else:
+            return left - right
+
+
+data = [58000, 58700, 55300, 54200, 53600, 52700, 57700, 61100]
+print(solution(data))
+
+data = [80000, 58000, 52700, 57700, 61100]
+print(solution(data))
+
+# 10. 알리는 포케가 좋아
+# https://pyalgo.co.kr/?page=10#
+
+from itertools import combinations
+
+def solution(data):
+    if data == [0, '']:
+        return "기본 포케가 제공됩니다."
+
+    n = data[0]
+    ingredient = ['연어', '참치', '닭가슴살', '베이컨', '버섯']
+    result = []
+    li = list(combinations(ingredient, n))
+    if data[1] == "":
+        for i in li:
+            result.append(list(i))
+        return result
+
+    customer_ingredient = data[1].split(', ')
+
+    for i in li:
+        if set(customer_ingredient).issubset(set(i)):
+            result.append(list(i))
+
+    return result
+
+data = []
+print(solution(data))
+
+
+data = [2, '연어']
+print(solution(data))
+
+
+data = [3, '']
+print(solution(data))
+
+s = ['연어', '참치']
+ingredient = ['연어', '참치', '닭가슴살', '베이컨', '버섯']
+
+print(set(s).issubset(set(ingredient)))
