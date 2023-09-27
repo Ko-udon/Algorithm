@@ -308,7 +308,34 @@ print(solution(data))
 data = [3, '']
 print(solution(data))
 
-s = ['연어', '참치']
-ingredient = ['연어', '참치', '닭가슴살', '베이컨', '버섯']
+# 12. 마라탕 많이 먹기
+import itertools
 
-print(set(s).issubset(set(ingredient)))
+s = [2, 4, 1, 3, 5, 8, 8, 6]
+
+def solution(data):
+
+    # 인접한 값이 있는 조합의 경우 삭제
+    def remove_adj(l, n):
+        for i in range(len(l)):
+            for j in range(n-1):
+                if l[i][j] + 1 == l[i][j+1]:
+                    l[i] = ()
+                    break
+
+    idx = [0, 1, 2, 3, 4, 5, 6, 7]
+    com3 = list(itertools.combinations(idx, 3))
+    com4 = list(itertools.combinations(idx, 4))
+
+    remove_adj(com3, 3)
+    remove_adj(com4, 4)
+
+    com3 = list(filter(lambda x: x!= (), com3))
+    com4 = list(filter(lambda x: x!= (), com4))
+
+    combinated = list(map(lambda x:sum([data[i] for i in x]), com3 + com4))
+    return max(combinated)
+
+
+solution(s)
+
