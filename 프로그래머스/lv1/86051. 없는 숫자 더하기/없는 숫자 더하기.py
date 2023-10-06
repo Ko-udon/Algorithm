@@ -1,5 +1,2 @@
 def solution(numbers):
-    answer = 45
-    for i in range(0,len(numbers)):
-        answer-=numbers[i]
-    return answer
+    return 45 - sum(list(filter(lambda x: x in numbers, range(0,10))))
