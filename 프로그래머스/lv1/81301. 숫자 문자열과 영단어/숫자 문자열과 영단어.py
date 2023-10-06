@@ -1,7 +1,6 @@
 def solution(s):
-    words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-
-    for i in range(len(words)):
-        s = s.replace(words[i], str(i))
-
+    numbers = ['zero','one','two','three','four','five','six','seven','eight','nine']
+    for n in range(len(numbers)):
+        s = s.replace(numbers[n], str(n))
     return int(s)
+    
