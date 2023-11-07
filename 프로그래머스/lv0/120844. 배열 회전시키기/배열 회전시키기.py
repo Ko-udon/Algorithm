@@ -1,3 +1,2 @@
 def solution(numbers, direction):
-    l = numbers
-    return [l[-1]] + l[:-1] if direction == "right" else l[1:] + [l[0]]
+    return [numbers[-1]] + numbers[:-1] if direction == "right" else numbers[1:] + [numbers[0]]
