@@ -1,6 +1,4 @@
 def solution(arr, queries):
-    for q in queries:
-        tmp = arr[q[0]]
-        arr[q[0]] = arr[q[1]]
-        arr[q[1]] = tmp
+    for a,b in queries:
+        arr[a],arr[b]=arr[b],arr[a]
     return arr
