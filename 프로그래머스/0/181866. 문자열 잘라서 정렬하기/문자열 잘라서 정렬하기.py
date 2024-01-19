@@ -1,5 +1,4 @@
 def solution(myString):
-    answer = sorted([n for n in myString.split('x')])
-    if "" in answer:
-        answer = [value for value in answer if value != ""]
-    return answer
+    answer = ' '.join(myString.split('x')).split()
+    return sorted(answer)
+    
