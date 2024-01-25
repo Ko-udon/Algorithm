@@ -1,2 +1,4 @@
 def solution(nums):
-    return min(len(nums)/2,len(set(nums)))
+    case1 = len(nums) / 2
+    case2 = len(set(nums))
+    return min(case1, case2)
