@@ -1,0 +1,14 @@
+def solution(s):
+    answer = []
+    s1 = s.lstrip('{').rstrip('}').split('},{')
+    
+    new = []
+    for i in s1:
+        new.append(i.split(','))
+
+    new.sort(key = len)
+    for i in new:
+        for j in range(len(i)):
+            if int(i[j]) not in answer:
+                answer.append(int(i[j]))
+    return answer
