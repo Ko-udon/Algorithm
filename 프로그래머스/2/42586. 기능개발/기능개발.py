@@ -5,6 +5,7 @@ def solution(progresses, speeds):
     for p in arr:
         finish_day.append(checkFinishDay(p[0], p[1]))
     #print(finish_day)
+    
     day = finish_day[0]
     finish = 1
     for i in range(1, len(finish_day)):
@@ -16,6 +17,7 @@ def solution(progresses, speeds):
             finish = 1
     answer.append(finish)
     return answer
+
 def checkFinishDay(progress, speed):
     day = 0
     while progress < 100:
