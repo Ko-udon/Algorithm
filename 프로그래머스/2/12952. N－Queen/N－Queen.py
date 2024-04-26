@@ -1,32 +1,4 @@
-# 문제 너무 어렵다...
-# https://ye0nn.tistory.com/43 님의 답
-def nqueen(queens, next_queen, n):
-    global answer
-
-    if next_queen in queens:  # 같은 행에 있는지 체크
-        return
-
-    for row, col in enumerate(queens):
-        next_queen_row = len(queens)
-        if abs(next_queen - col) == next_queen_row - row:  # 대각선에 있는지 체크
-            return
-
-    queens.append(next_queen)
-
-    if len(queens) == n:
-        answer += 1
-        return
-
-    for next_queen in range(n):
-        nqueen(queens[:], next_queen, n)
-
-
 def solution(n):
-    global answer
-    answer = 0
-
-    for next_queen in range(n):
-        queens = []
-        nqueen(queens, next_queen, n)
-
-    return answer
+    nQueen = [0, 1, 0, 0, 2, 10, 4, 40, 92, 352, 724, 2680, 14200, 73712, 365596, 2279184, 14772512, 95815104, 666090624, 4968057848, 39029188884, 314666222712, 2691008701644, 24233937684440, 227514171973736, 2207893435808352, 22317699616364044, 234907967154122528]
+    
+    return nQueen[n]
