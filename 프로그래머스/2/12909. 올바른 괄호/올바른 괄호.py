@@ -1,5 +1,6 @@
 def solution(s):
     stack = list(s)
+    # 맨 앞이나 뒤가 성립이 안되는 괄호인 경우
     if stack[-1] == "(" or stack[0] == ")":
         return False
 
@@ -14,9 +15,4 @@ def solution(s):
         elif stack[-1]== ')':
             closed += 1
             stack.pop()
-
-    if opened == closed :
-        return True
-    else:
-        return False
-        
+    return True if opened == closed else False
