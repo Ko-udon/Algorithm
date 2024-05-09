@@ -1,12 +1,11 @@
 def solution(s):
     answer = ''
-    arr = s.split(" ")
-    for i, v in enumerate(arr):
-        if v=='' or v[0].isdigit():
-            arr[i] = v.lower()
-        else:
-            v = v.lower()
-            v = v[0].upper() + v[1:]
-            arr[i] = v
-    answer = ' '.join(map(str, arr))
-    return answer
+    l = s.split(" ")
+    for i, word in enumerate(l):
+        # 첫 단어가 글자이고 빈칸이 아닌 경우
+        if word and not word.isdigit():
+            f = word[0].upper()
+            b = word[1:].lower()
+            l[i] = f + b
+    return ' '.join(l)
+    
