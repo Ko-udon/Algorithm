@@ -1,9 +1,7 @@
 def solution(citations):
     citations.sort(reverse = True)
     h = 0
-    
-    size = len(citations)
-    for i in range(size):
+    for i in range(len(citations)):
         if citations[i] > h:
             h = i + 1
         else:
