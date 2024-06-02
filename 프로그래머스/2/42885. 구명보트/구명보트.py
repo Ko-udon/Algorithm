@@ -1,7 +1,6 @@
 def solution(people, limit):
     # 투 포인터
     group = 0
-    
     left, right = 0, len(people) - 1
     people.sort()
     while left < right:
