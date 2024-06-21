@@ -1,7 +1,8 @@
-def solution(phoneBook):
-    sort_phoneBook= sorted(phoneBook)
-    #print(zip(sort_phoneBook, sort_phoneBook[1:]))
-    for p1, p2 in zip(sort_phoneBook, sort_phoneBook[1:]):
-        if p2.startswith(p1):
+def solution(phoneBook): 
+    pb = sorted(phoneBook)
+    for i in range(len(phoneBook)-1):
+        if pb[i+1].startswith(pb[i]):
             return False
     return True
+        
+        
