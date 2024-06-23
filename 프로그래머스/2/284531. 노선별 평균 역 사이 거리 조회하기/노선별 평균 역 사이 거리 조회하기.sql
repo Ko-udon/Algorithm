@@ -1,6 +1,6 @@
-SELECT ROUTE, 
-       CONCAT(ROUND(SUM(D_BETWEEN_DIST), 1), 'km') AS TOTAL_DISTANCE, 
-       CONCAT(ROUND(AVG(D_BETWEEN_DIST), 2), 'km') AS AVERAGE_DISTANCE
-FROM SUBWAY_DISTANCE
-GROUP BY 1
-ORDER BY 1 DESC
+select ROUTE, 
+concat(round(sum(D_BETWEEN_DIST), 1), 'km') AS TOTAL_DISTANCE, 
+concat(round(avg(D_BETWEEN_DIST), 2), 'km') AS AVERAGE_DISTANCE
+from SUBWAY_DISTANCE
+group by ROUTE
+order by ROUTE desc  # 총 누계거리를 기준으로 내림차순하라메,,
