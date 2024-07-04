@@ -1,29 +1,20 @@
+# 제일 깔끔한 풀이
+
 def solution(enroll, referral, seller, amount):
-    result = []
-    memberRecommender = dict() # 추천인 dict에 넣고
-    memberProfit = dict() # 수익금
+    graph,ans = {},{e:0 for e in enroll}
 
-    for i in range(len(enroll)):
-        memberRecommender[enroll[i]] = referral[i]
-        memberProfit[enroll[i]] = 0
+    for e,r in zip(enroll,referral): graph[e]=r
 
-    #for i in range(len(amount)):
-    #    memberProfit[seller[i]] = amount[i]*100
+    for s,a in zip(seller,amount):
+        money = a*100
+        rate = money//10
+        ans[s] += money-rate
+        x = graph[s]
 
-    for i in range(len(seller)):
-        cur = seller[i]
-        profit = amount[i]*100
-        memberProfit[cur] += amount[i]*100
-        while memberRecommender[cur] != '-':
-            if profit == 0:
-                break
-            profit = int(0.1*profit)
-            memberProfit[cur] -= profit
-            memberProfit[memberRecommender[cur]] += profit
-            cur = memberRecommender[cur]    
-        if memberRecommender[cur] == '-':
-            memberProfit[cur] -= int(profit*0.1)
-    for member in enroll:
-        result.append(memberProfit[member])
-    return result
+        while x != "-":
+            if rate==0: break
+            ans[x] += rate-rate//10
+            rate//=10
+            x = graph[x]
 
+    return list(ans.values())
