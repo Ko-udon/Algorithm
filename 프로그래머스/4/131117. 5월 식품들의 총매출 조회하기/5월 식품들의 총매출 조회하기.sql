@@ -1,0 +1,9 @@
+select O.PRODUCT_ID,
+       P.PRODUCT_NAME,
+       sum(P.PRICE*O.AMOUNT) TOTAL_SALES
+from FOOD_PRODUCT P inner join FOOD_ORDER O 
+on P.PRODUCT_ID = O.PRODUCT_ID
+
+where MONTH(O.PRODUCE_DATE) = 05
+group by P.PRODUCT_NAME
+order by 3 desc, 1
