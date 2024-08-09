@@ -1,3 +1,4 @@
+# 쉬운 풀이법 공유해주신 Heyvivv님 감사합니다
 SELECT ID
 FROM
 (
