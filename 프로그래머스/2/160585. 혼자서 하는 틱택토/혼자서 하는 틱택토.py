@@ -1,6 +1,5 @@
 # 어렵다,, 정확도가 자꾸 안나온다 ㅠ
 # 풀이 보고 공부
-
 def solution(board):
     answer = 1
 
