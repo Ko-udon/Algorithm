@@ -1,6 +1,6 @@
 def solution(m, musicinfos): # split, replace 많이 쓰는 문제
     answer = '(None)'
-    m = m.replace('A#', 'H').replace('C#', 'I').replace('D#', 'J').replace('F#', 'K').replace('G#', 'L').replace('B#', 'M') # 문제조건에 없는 B#...
+    m = m.replace('A#', 'H').replace('C#', 'I').replace('D#', 'J').replace('F#', 'K').replace('G#', 'L').replace('B#', 'M') # 문제조건에 없는 B#
     max_time = 0
     for info in musicinfos:
         start, end, title, melody = info.split(',')
