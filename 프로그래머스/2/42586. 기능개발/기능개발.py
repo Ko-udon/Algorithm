@@ -4,7 +4,6 @@ def solution(progresses, speeds):
     finish_day = []
     for p in arr:
         finish_day.append(checkFinishDay(p[0], p[1]))
-    #print(finish_day)
     
     day = finish_day[0]
     finish = 1
