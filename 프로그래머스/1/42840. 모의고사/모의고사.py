@@ -1,23 +1,24 @@
-def comp(answers, random):
-    cnt=0
-    for i in range(len(answers)):
-        if answers[i]==random[i]:
-            cnt+=1
-    return cnt
+a = [1, 2, 3, 4, 5]
+b = [2, 1, 2, 3, 2, 4, 2, 5]
+c = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+
+
 
 def solution(answers):
-    arr1 = [1, 2, 3, 4, 5]
-    arr2 = [2, 1, 2, 3, 2, 4, 2, 5]
-    arr3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
-    n = len(answers)
-    score = []
-    score.append(comp(answers, arr1*(n//5)+arr1[:n%5]))
-    score.append(comp(answers, arr2*(n//8)+arr2[:n%8]))
-    score.append(comp(answers, arr3*(n//10)+arr3[:n%10]))
+    answer = []
+    aa = [1 for i, val in enumerate(answers) if a[i % 5] == val]
+    bb = [1 for i, val in enumerate(answers) if b[i % 8] == val]
+    cc = [1 for i, val in enumerate(answers) if c[i % 10] == val]
 
-    answer=[]
-    max_result = max(score)
-    for i in range(3):
-        if score[i]==max_result:
-            answer.append(i+1)
+    x = max([len(aa),len(bb),len(cc)])
+
+    if x == len(aa) :
+        answer.append(1)
+    if x == len(bb) :
+        answer.append(2)
+    if x == len(cc) :
+        answer.append(3)
+
+    sorted(answer)
+
     return answer
