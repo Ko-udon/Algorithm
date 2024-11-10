@@ -2,15 +2,16 @@ import heapq
 
 def solution(scoville, K):
     answer = 0
-    heap = []
+    heapq.heapify(scoville)
 
-    for s in scoville:
-        heapq.heappush(heap, s)
-    while heap[0] < K:
-        if len(heap) == 1:
+    while True:
+        minimum = heapq.heappop(scoville)
+        if minimum >= K:
+            break
+        if len(scoville) < 1:
             return -1
-        n = heapq.heappop(heap)
-        t = heapq.heappop(heap)
-        heapq.heappush(heap, n + (t * 2))
+        secminimum = heapq.heappop(scoville)
+        heapq.heappush(scoville, minimum + (secminimum * 2))
         answer += 1
+
     return answer
